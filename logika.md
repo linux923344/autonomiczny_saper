@@ -1,4 +1,4 @@
-8.03
+8.03.2019 
 ===========================
 * Plansza (3 bomby, typek)
 * Ruchy typka
