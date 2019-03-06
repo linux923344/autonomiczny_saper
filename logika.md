@@ -19,4 +19,4 @@
 
 27.03.2019
 ===========================
-- [ ] Oddanie projketu  
+- [ ] Oddanie agenta projektu (plansza itp.) 
