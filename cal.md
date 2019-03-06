@@ -11,7 +11,7 @@
 - [ ] Ruchy typka
 - [ ] Przesuwanie sie typka
 - [ ] Raport
-- [ ] Podział obowiazków --> 9/03
+- [ ] Podział obowiazków 
 - [ ] Jak typek bedzie wiedzial droge??
 
 11.03.2019
