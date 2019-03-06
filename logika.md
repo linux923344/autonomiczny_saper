@@ -1,4 +1,5 @@
-#8.03
+8.03
+===========================
 * Plansza (3 bomby, typek)
 * Ruchy typka
 * Przesuwanie sie typka
