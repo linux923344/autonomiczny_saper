@@ -1,6 +1,6 @@
 DONE
 ===========================
-- [x] Logika.pdf
+- [x] Testowa logika
 - [x] Testowa plansza
 
 
@@ -18,6 +18,7 @@ DONE
 ===========================
 - [ ] Raport
 - [ ] Wpisanie do macierzy (planszy)
+- [ ] Przemyslenie logiki
 
 27.03.2019
 ===========================
