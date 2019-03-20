@@ -4,14 +4,17 @@ import pygame
 from pygame.locals import *
 from random import *
 
+DISPLACEMENT_Y = 63
+DISPLACEMENT_X = 45
+SQUARE_SIZE = 100
 
 class Board:
     def __init__(self, x, y):
         self.x=x    
         self.y=y
         self.board = [[None for j in range(12)]for i in range(8)]
-        self.displacement_x = 45
-        self.displacement_y = 63
+        
+        
 
     def start(self):
         pygame.init()
@@ -39,7 +42,8 @@ class Board:
             for index_x, x in enumerate(y):
                 if(x!=None):
                     sprite=pygame.image.load(x.sprite).convert_alpha()
-                    self.window.blit(sprite,(self.displacement_x + index_x*100,self.displacement_y + index_y*100))
+                    self.window.blit(sprite,(DISPLACEMENT_X + index_x*SQUARE_SIZE,
+                    DISPLACEMENT_Y + index_y*SQUARE_SIZE))
 
     def close(self):
         self.run = False
