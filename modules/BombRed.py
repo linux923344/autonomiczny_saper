@@ -6,7 +6,7 @@ from random import *
 class BombRed:
     def __init__ (self):
         #dodaj .convert_alpha() w board
-        self.sprite = pygame.image.load('sprites/bombR.png')
+        self.sprite = 'sprites/bombR.png'
         self.code = 0
 
  
