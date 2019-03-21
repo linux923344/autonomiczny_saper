@@ -3,5 +3,5 @@ from modules.BombRed import BombRed
 
 board = Board(1480, 900)
 red = BombRed()
-board.addObject(red,1,1)
+board.addObject(red,5,1)
 board.start()

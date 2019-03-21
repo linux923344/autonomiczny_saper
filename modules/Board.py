@@ -27,8 +27,12 @@ class Board:
 
         while (self.run):
             pygame.time.delay(100)
+            
+            
             self.renderSprites()
             pygame.display.update()
+            
+            
             for event in pygame.event.get():
                 if(event.type == pygame.QUIT):
                     self.close()

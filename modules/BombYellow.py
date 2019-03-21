@@ -1,7 +1,7 @@
 import pygame
 from pygame.locals import *
 from random import *
-from Bomb import Bomb
+from modules.Bomb import Bomb
 
 class BombYellow(Bomb):
     def __init__ (self):
