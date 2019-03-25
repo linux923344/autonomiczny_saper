@@ -1,5 +1,4 @@
 # DONE
-
 -   [x] Testowa logika
 -   [x] Testowa plansza
 
