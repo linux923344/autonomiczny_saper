@@ -52,4 +52,3 @@ class Board:
     def close(self):
         self.run = False
         pygame.quit()
-Euterpea
