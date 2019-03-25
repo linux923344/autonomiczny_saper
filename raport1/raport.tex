@@ -20,6 +20,11 @@
 \lhead{}
 \cfoot{}
 \rfoot{Strona \thepage}
+\fancypagestyle{firststyle}
+{
+	 \fancyhf{}
+	 \fancyfoot[R]{Strona \thepage}
+}
 
 \newcounter{coun}[section]
 \newenvironment{coun}[1][]{\refstepcounter{coun}\par\medskip
@@ -29,6 +34,7 @@
 \title{Raport I \\  (środowisko agenta i reprezentacja wiedzy)}
 \author{Marcin Woźniak \\ Filip Izydorczyk \\ Hubert Wrzesiński \\ Przemysław Fierek}
 \maketitle
+\thispagestyle{firststyle}
 \vspace{40}
 Repozytorium: \url{https://github.com/linux923344/autonomiczny_saper/}} \\
 
@@ -43,6 +49,7 @@ Repozytorium: \url{https://github.com/linux923344/autonomiczny_saper/}} \\
 \begin{center}
 \includegraphics[scale=0.4]{plansza.png}
 \end{center}
-Na załączonym zrzucie ekranu widoczny jest "saper" czyli nasz Agent, oraz trzy kolorowe obiekty (bomby), które nasz agent ma za zadanie je rozbroić.
+Na załączonym zrzucie ekranu widoczny jest saper czyli nasz Agent, oraz trzy kolorowe obiekty (bomby), które nasz agent ma za zadanie je rozbroić.
+
 \end{document}
 
