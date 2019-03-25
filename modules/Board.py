@@ -4,8 +4,8 @@ import pygame
 from pygame.locals import *
 from random import *
 
-DISPLACEMENT_Y = 63
-DISPLACEMENT_X = 45
+DISPLACEMENT_Y = 45
+DISPLACEMENT_X = 33
 SQUARE_SIZE = 100
 
 class Board:
@@ -28,10 +28,8 @@ class Board:
         while (self.run):
             pygame.time.delay(100)
             
-            
             self.renderSprites()
-            pygame.display.update()
-            
+            pygame.display.update()    
             
             for event in pygame.event.get():
                 if(event.type == pygame.QUIT):
