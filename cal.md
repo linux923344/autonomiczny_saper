@@ -21,9 +21,9 @@
 
     # 25.03.2019 (NASTEPNE SPOTKANIE)
 
--   [ ] Raport
--   [ ] Wpisanie do macierzy (planszy)
--   [ ] Napsianie klasy Saper
+-   [x] Raport
+-   [x] Wpisanie do macierzy (planszy)
+-   [x] Napsianie klasy Saper
 
 # 27.03.2019
 
