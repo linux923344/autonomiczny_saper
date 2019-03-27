@@ -18,17 +18,17 @@ width = 68
 height = 92
 vel = 100
 
-walkRight=pygame.image.load('sprites/r.png').convert_alpha()
-walkLeft = pygame.image.load('sprites/l.png').convert_alpha()
-walkUp=pygame.image.load('sprites/u.png').convert_alpha()
-walkDown=pygame.image.load('sprites/d.png').convert_alpha()
+walkRight=pygame.image.load('../sprites/r.png').convert_alpha()
+walkLeft = pygame.image.load('../sprites/l.png').convert_alpha()
+walkUp=pygame.image.load('../sprites/u.png').convert_alpha()
+walkDown=pygame.image.load('../sprites/d.png').convert_alpha()
 
-bombY=pygame.image.load('sprites/bombY.png').convert_alpha()
-bombB=pygame.image.load('sprites/bombB.png').convert_alpha()
-bombR=pygame.image.load('sprites/bombR.png').convert_alpha()
-stone=pygame.image.load('sprites/stone.png').convert_alpha()
+bombY=pygame.image.load('../sprites/bombY.png').convert_alpha()
+bombB=pygame.image.load('../sprites/bombB.png').convert_alpha()
+bombR=pygame.image.load('../sprites/bombR.png').convert_alpha()
+stone=pygame.image.load('../sprites/stone.png').convert_alpha()
 
-bg=pygame.image.load('sprites/pole.png')
+bg=pygame.image.load('../sprites/pole.png')
 
 
 run = True
