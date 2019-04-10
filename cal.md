@@ -29,9 +29,9 @@
 
 # TO DO 
 
--[ ] Konwerten
--[ ] Mapa do konwertowania
--[ ] Reprezentacja wiedzy:
+- [ ] Konwerten
+- [ ] Mapa do konwertowania
+- [ ] Reprezentacja wiedzy:
 	 * zółta raz kliknąć
  	 * czerwona 3 raz kliknąć
  	 * niebieska trzeba mieć narzędzie
