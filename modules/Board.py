@@ -14,15 +14,11 @@ class Board:
         self.y=y
         self.board = [[None for j in range(12)]for i in range(8)]
         
-        
-
     def start(self):
         pygame.init()
         self.window = pygame.display.set_mode((self.x,self.y))
         pygame.display.set_caption("Saper")
         self.background=pygame.image.load('sprites/pole.png')
-        
-        
         self.run = True
 
         while (self.run):
