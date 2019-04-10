@@ -3,6 +3,7 @@ from modules.BombRed import BombRed
 from modules.BombBlue import BombBlue
 from modules.BombYellow import BombYellow
 from modules.Saper import Saper
+from modules.Stone import Stone
 
 board = Board(1480, 900)
 r = BombRed()
@@ -12,5 +13,7 @@ board.addObject(b,6,1)
 y = BombYellow()
 board.addObject(y,7,7)
 s = Saper()
-board.addObject(s,0,0)
+board.addPlayer(s,0,0)
+stone = Stone()
+board.addObject(stone,0,3)
 board.start()
