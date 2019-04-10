@@ -25,5 +25,14 @@
 -   [x] Napsianie klasy Saper
 
 # 27.03.2019
+-   [x] Oddanie agenta projektu (plansza itp.)
 
--   [ ] Oddanie agenta projektu (plansza itp.)
+# TO DO 
+
+-[ ] Konwerten
+-[ ] Mapa do konwertowania
+-[ ] Reprezentacja wiedzy:
+	 * zółta raz kliknąć
+ 	 * czerwona 3 raz kliknąć
+ 	 * niebieska trzeba mieć narzędzie
+
