@@ -51,17 +51,28 @@ class Board:
         del cords
         if(direction == Direction.LEFT):
             self.board[cord_y][cord_x].sprite = self.board[cord_y][cord_x].walkLeft
-            self.board[cord_y][cord_x - 1] = self.board[cord_y][cord_x]
+            if(cord_x> 0 and self.board[cord_y][cord_x -1] == None):
+                self.board[cord_y][cord_x - 1] = self.board[cord_y][cord_x]
+            else:
+                return False
         elif(direction == Direction.RIGHT):
             self.board[cord_y][cord_x].sprite = self.board[cord_y][cord_x].walkRight
-            self.board[cord_y][cord_x + 1] = self.board[cord_y][cord_x]
+            if(cord_x< 11 and self.board[cord_y][cord_x +1] == None):
+                self.board[cord_y][cord_x + 1] = self.board[cord_y][cord_x]
+            else:
+                return False
         elif(direction == Direction.DOWN):
             self.board[cord_y][cord_x].sprite = self.board[cord_y][cord_x].walkDown
-            self.board[cord_y + 1][cord_x] = self.board[cord_y][cord_x]
+            if(cord_y< 7 and self.board[cord_y+1][cord_x] == None):
+                self.board[cord_y + 1][cord_x] = self.board[cord_y][cord_x]
+            else:
+                return False
         elif(direction == Direction.UP):
             self.board[cord_y][cord_x].sprite = self.board[cord_y][cord_x].walkUp
-            self.board[cord_y - 1][cord_x] = self.board[cord_y][cord_x]
-
+            if(cord_y> 0 and self.board[cord_y - 1][cord_x] == None):
+                self.board[cord_y - 1][cord_x] = self.board[cord_y][cord_x]
+            else:
+                return False
         self.board[cord_y][cord_x] = None
 
 
