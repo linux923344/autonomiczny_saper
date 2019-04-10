@@ -13,12 +13,12 @@
 -   [x] Spotkanie
 -   [x] Plansza (3 bomby, typek)
 
-    # 18.03.2019
+# 18.03.2019
 
 -   [x] Napsianie klasy Board
 -   [x] Zaimportowanie klasy Board do main.py
 
-    # 25.03.2019 (NASTEPNE SPOTKANIE)
+# 25.03.2019 (NASTEPNE SPOTKANIE)
 
 -   [x] Raport
 -   [x] Wpisanie do macierzy (planszy)
