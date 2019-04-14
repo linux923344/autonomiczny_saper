@@ -7,7 +7,7 @@ from modules.Converter import *
 
 board = Board(1480, 900)
 conv = Conventer(board)
-conv.mapreader("modules/mapa1.txt")
+conv.mapreader("maps/map1.txt")
 #r = BombRed()
 #board.addObject(r,5,1)
 #b = BombBlue()
