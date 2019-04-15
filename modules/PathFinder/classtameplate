@@ -1,0 +1,30 @@
+Graf
+	kostruktor(board)
+		dla kazdego pola w board
+			fi pole == None
+				utworez v od tego pola
+				dodaj v fo tablicy wirzcholkow
+
+	getVertexByWspołrzędneXDDDD(x,y)
+		dla kazdeo v w tablicy wiercholkow
+			if x == v.x and y == v.y
+				return v
+	
+	getSuccesorsList(v):
+		successorlist = []
+		if boadrd[v.y +1][v.x] == none
+			v=self.getVertexByWspołrzędneXDDDD(v.x,v.y +1)
+			successorlist.append(v)
+		if boadrd[v.y - 1][v.x] == none
+			v=self.getVertexByWspołrzędneXDDDD(v.x,v.y - 1)
+			successorlist.append(v)
+		if boadrd[v.y][v.x + 1] == none
+			v=self.getVertexByWspołrzędneXDDDD(v.x + 1,v.y)
+			successorlist.append(v)
+		if boadrd[v.y][v.x - 1] == none
+			v=self.getVertexByWspołrzędneXDDDD(v.x - 1,v.y)
+			successorlist.append(v)
+		return successorlist
+
+
+
