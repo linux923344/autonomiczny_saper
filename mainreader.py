@@ -19,5 +19,4 @@ conv.mapreader("maps/map_graph.txt")
 # board.addObject(s,0,0)
 finder = PathFinder(board)
 
-
 board.start()

@@ -17,3 +17,19 @@ class PathFinder:
             if(v.x == x and v.y == y):
                 return v
         return False
+
+    def getSuccsessorsList(self, v):
+        successors = []
+        if v.y < 7 and self.board.board[v.y+1][v.x] == None:
+            successor = self.getVertexByCords(v.x, v.y+1)
+            successors.append(successor)
+        if v.y > 0 and self.board.board[v.y-1][v.x] == None:
+            successor = self.getVertexByCords(v.x, v.y-1)
+            successors.append(successor)
+        if v.x < 11 and self.board.board[v.y][v.x + 1] == None:
+            successor = self.getVertexByCords(v.x + 1, v.y)
+            successors.append(successor)
+        if v.x > 0 and self.board.board[v.y][v.x - 1] == None:
+            successor = self.getVertexByCords(v.x - 1, v.y)
+            successors.append(successor)
+        return successors
