@@ -11,3 +11,9 @@ class PathFinder:
                 if(row == None):
                     v = Vertex(indexrow, indexline)
                     self.vertices.append(v)
+
+    def getVertexByCords(self, x, y):
+        for v in self.vertices:
+            if(v.x == x and v.y == y):
+                return v
+        return False
