@@ -33,3 +33,10 @@ class PathFinder:
             successor = self.getVertexByCords(v.x - 1, v.y)
             successors.append(successor)
         return successors
+
+    def getAllSuccessorsList(self):
+        dictionary = {}
+        for v in self.vertices:
+            successors = self.getSuccsessorsList(v)
+            dictionary[v] = successors
+        return dictionary
