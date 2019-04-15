@@ -4,16 +4,16 @@ from modules.BombBlue import BombBlue
 from modules.BombYellow import BombYellow
 from modules.Saper import Saper
 from modules.Stone import Stone
+from modules.MapReader import *
+from modules.PathFinder.PathFinder import PathFinder
+from modules.Direction import Direction
 
 board = Board(1480, 900)
-r = BombRed()
-board.addObject(r,5,1)
-b = BombBlue()
-board.addObject(b,6,1)
-y = BombYellow()
-board.addObject(y,7,7)
+reader = MapReader(board)
+reader.read("maps/map_graph.txt")
 s = Saper()
-board.addPlayer(s,0,0)
-stone = Stone()
-board.addObject(stone,0,3)
+finder = PathFinder(board)
+steps = finder.getPathTo(10, 7)
+s.addSteps(steps)
+board.addPlayer(s, 5, 0)
 board.start()

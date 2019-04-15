@@ -7,11 +7,11 @@ from modules.Board import *
 from modules.Stone import *
 
 
-class Conventer:
+class MapReader:
     def __init__(self, board):
         self.board = board
 
-    def mapreader(self, mapfile):
+    def read(self, mapfile):
         f = open(mapfile, "r")
         mapa = f.read().split("\n")
         for indexline, line in enumerate(mapa):
