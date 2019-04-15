@@ -1,4 +1,5 @@
 from modules.PathFinder.Vertex import Vertex
+from modules.Direction import Direction
 
 
 class Graph:
@@ -19,6 +20,16 @@ class Graph:
 
     def getPathTo(self, v):
         vpoint = v
+        path = []
         while(vpoint.parent != None):
-            print(vpoint.x, vpoint.y)
+            if(vpoint.x < vpoint.parent.x):
+                path.append(Direction.LEFT)
+            elif(vpoint.x > vpoint.parent.x):
+                path.append(Direction.RIGHT)
+            elif(vpoint.y > vpoint.parent.y):
+                path.append(Direction.DOWN)
+            else:
+                path.append(Direction.UP)
             vpoint = vpoint.parent
+        path.reverse()
+        return path

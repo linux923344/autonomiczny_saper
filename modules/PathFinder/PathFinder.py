@@ -46,4 +46,5 @@ class PathFinder:
         successorsList = self.getAllSuccessorsList()
         graph = Graph(successorsList)
         graph.dfs()
-        graph.getPathTo(self.getVertexByCords(x, y))
+        x = graph.getPathTo(self.getVertexByCords(x, y))
+        print(x)
