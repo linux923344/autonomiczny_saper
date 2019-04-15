@@ -18,4 +18,7 @@ class Graph:
                 self.visiteVertex(successor, v)
 
     def getPathTo(self, v):
-        pass
+        vpoint = v
+        while(vpoint.parent != None):
+            print(vpoint.x, vpoint.y)
+            vpoint = vpoint.parent

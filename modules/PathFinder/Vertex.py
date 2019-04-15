@@ -9,7 +9,13 @@ class Vertex:
         return hash((self.x, self.y))
 
     def __eq__(self, other):
-        return (self.x, self.y) == (other.x, other.y)
+        if(other == None):
+            return False
+        else:
+            return (self.x, self.y) == (other.x, other.y)
 
     def __ne__(self, other):
-        return not(self == other)
+        if(other == None):
+            return True
+        else:
+            return not(self == other)
