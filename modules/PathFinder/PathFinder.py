@@ -1,4 +1,5 @@
 from modules.PathFinder.Vertex import Vertex
+from modules.PathFinder.Graph import Graph
 
 
 class PathFinder:
@@ -40,3 +41,9 @@ class PathFinder:
             successors = self.getSuccsessorsList(v)
             dictionary[v] = successors
         return dictionary
+
+    def getPathTo(self, x, y):
+        successorsList = self.getAllSuccessorsList()
+        graph = Graph(successorsList)
+        graph.dfs()
+        graph.printVertexList()
