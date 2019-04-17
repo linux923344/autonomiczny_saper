@@ -68,18 +68,27 @@ class Board:
             self.board[cord_y][cord_x].sprite = self.board[cord_y][cord_x].walkRight
             if(cord_x < 11 and self.board[cord_y][cord_x + 1] == None):
                 self.board[cord_y][cord_x + 1] = self.board[cord_y][cord_x]
+            elif(cord_x > 0 and type(self.board[cord_y][cord_x + 1]) is Tool):
+                self.player.pickUp(self.board[cord_y][cord_x + 1])
+                self.board[cord_y][cord_x + 1] = self.board[cord_y][cord_x]
             else:
                 return False
         elif(direction == Direction.DOWN):
             self.board[cord_y][cord_x].sprite = self.board[cord_y][cord_x].walkDown
             if(cord_y < 7 and self.board[cord_y+1][cord_x] == None):
                 self.board[cord_y + 1][cord_x] = self.board[cord_y][cord_x]
+            elif(cord_x > 0 and type(self.board[cord_y+1][cord_x]) is Tool):
+                self.player.pickUp(self.board[cord_y+1][cord_x])
+                self.board[cord_y+1][cord_x] = self.board[cord_y][cord_x]
             else:
                 return False
         elif(direction == Direction.UP):
             self.board[cord_y][cord_x].sprite = self.board[cord_y][cord_x].walkUp
             if(cord_y > 0 and self.board[cord_y - 1][cord_x] == None):
                 self.board[cord_y - 1][cord_x] = self.board[cord_y][cord_x]
+            elif(cord_x > 0 and type(self.board[cord_y-1][cord_x]) is Tool):
+                self.player.pickUp(self.board[cord_y-1][cord_x])
+                self.board[cord_y-1][cord_x] = self.board[cord_y][cord_x]
             else:
                 return False
         self.board[cord_y][cord_x] = None
