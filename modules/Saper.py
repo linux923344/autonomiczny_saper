@@ -13,7 +13,12 @@ class Saper:
         self.walkDown = 'sprites/d.png'
         self.sprite = self.walkDown
         self.steps = queue.Queue()
+        self.equipment = []
 
     def addSteps(self, stepsList):
         for step in stepsList:
             self.steps.put(step)
+
+    def pickUp(self, item):
+        print(item)
+        self.equipment.append(item)

@@ -10,10 +10,10 @@ from modules.Direction import Direction
 
 board = Board(1480, 900)
 reader = MapReader(board)
-reader.read("maps/map_graph.txt")
+reader.read("maps/map1.txt")
 s = Saper()
 finder = PathFinder(board)
-steps = finder.getPathTo(10, 7)
+steps = finder.getPathTo(2, 6)
 s.addSteps(steps)
 board.addPlayer(s, 5, 0)
 board.start()

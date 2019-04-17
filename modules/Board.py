@@ -4,6 +4,7 @@ import pygame
 from pygame.locals import *
 from random import *
 from modules.Direction import Direction
+from modules.Tool import Tool
 
 DISPLACEMENT_Y = 45
 DISPLACEMENT_X = 33
@@ -57,6 +58,9 @@ class Board:
         if(direction == Direction.LEFT):
             self.board[cord_y][cord_x].sprite = self.board[cord_y][cord_x].walkLeft
             if(cord_x > 0 and self.board[cord_y][cord_x - 1] == None):
+                self.board[cord_y][cord_x - 1] = self.board[cord_y][cord_x]
+            elif(cord_x > 0 and type(self.board[cord_y][cord_x - 1]) is Tool):
+                self.player.pickUp(self.board[cord_y][cord_x - 1])
                 self.board[cord_y][cord_x - 1] = self.board[cord_y][cord_x]
             else:
                 return False

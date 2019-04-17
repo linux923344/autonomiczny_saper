@@ -5,6 +5,7 @@ from modules.BombBlue import *
 from modules.BombYellow import *
 from modules.Board import *
 from modules.Stone import *
+from modules.Tool import Tool
 
 
 class MapReader:
@@ -29,4 +30,8 @@ class MapReader:
                 elif row == "S":
                     stone = Stone()
                     self.board.addObject(stone, indexrow, indexline)
+                elif row == "T":
+                    tool = Tool()
+                    self.board.addObject(tool, indexrow, indexline)
+
         f.close()
