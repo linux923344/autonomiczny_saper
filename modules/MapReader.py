@@ -6,6 +6,7 @@ from modules.BombYellow import *
 from modules.Board import *
 from modules.Stone import *
 from modules.Tool import Tool
+from modules.Water import Water
 
 
 class MapReader:
@@ -33,5 +34,8 @@ class MapReader:
                 elif row == "T":
                     tool = Tool()
                     self.board.addObject(tool, indexrow, indexline)
+                elif row == "W":
+                    water = Water()
+                    self.board.addObject(water, indexrow, indexline)
 
         f.close()
