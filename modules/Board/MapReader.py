@@ -10,10 +10,8 @@ from modules.MapObjects.Water import Water
 
 
 class MapReader:
-    def __init__(self, board):
-        self.board = board
-
-    def read(self, mapfile):
+    @staticmethod
+    def read(mapfile, board):
         f = open(mapfile, "r")
         mapa = f.read().split("\n")
         for indexline, line in enumerate(mapa):
@@ -21,21 +19,21 @@ class MapReader:
                 #print(indexline, indexrow)
                 if row == "R":
                     bomb = BombRed()
-                    self.board.addObject(bomb, indexrow, indexline)
+                    board.addObject(bomb, indexrow, indexline)
                 elif row == "B":
                     bomb = BombBlue()
-                    self.board.addObject(bomb, indexrow, indexline)
+                    board.addObject(bomb, indexrow, indexline)
                 elif row == "Y":
                     bomb = BombYellow()
-                    self.board.addObject(bomb, indexrow, indexline)
+                    board.addObject(bomb, indexrow, indexline)
                 elif row == "S":
                     stone = Stone()
-                    self.board.addObject(stone, indexrow, indexline)
+                    board.addObject(stone, indexrow, indexline)
                 elif row == "T":
                     tool = Tool()
-                    self.board.addObject(tool, indexrow, indexline)
+                    board.addObject(tool, indexrow, indexline)
                 elif row == "W":
                     water = Water()
-                    self.board.addObject(water, indexrow, indexline)
+                    board.addObject(water, indexrow, indexline)
 
         f.close()

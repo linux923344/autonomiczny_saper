@@ -4,8 +4,7 @@ from modules.Board.MapReader import *
 from modules.PathFinder.PathFinder import PathFinder
 
 board = Board(1480, 900)
-reader = MapReader(board)
-reader.read("maps/map_graph.txt")
+MapReader.read("maps/map_graph.txt", board)
 s = Saper()
 finder = PathFinder(board)
 steps = finder.getPathTo(10, 7)
