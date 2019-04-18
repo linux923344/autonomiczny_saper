@@ -1,12 +1,12 @@
 import pygame
 from pygame.locals import *
-from modules.BombRed import *
-from modules.BombBlue import *
-from modules.BombYellow import *
-from modules.Board import *
-from modules.Stone import *
-from modules.Tool import Tool
-from modules.Water import Water
+from modules.MapObjects.BombRed import *
+from modules.MapObjects.BombBlue import *
+from modules.MapObjects.BombYellow import *
+from modules.Board.Board import *
+from modules.MapObjects.Stone import *
+from modules.MapObjects.Tool import Tool
+from modules.MapObjects.Water import Water
 
 
 class MapReader:

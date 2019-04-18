@@ -1,5 +1,5 @@
 from modules.PathFinder.Vertex import Vertex
-from modules.Direction import Direction
+from modules.Board.Direction import Direction
 
 
 class Graph:
