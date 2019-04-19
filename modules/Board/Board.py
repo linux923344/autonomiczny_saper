@@ -19,7 +19,7 @@ class Board:
         self.x = x
         self.y = y
         self.board = [[None for j in range(12)]for i in range(8)]
-        self.eq_gui = EquipmentGui(1280, 150)
+        self.eq_gui = EquipmentGui(1280, 125)
 
     def start(self):
         pygame.init()
