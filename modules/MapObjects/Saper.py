@@ -20,7 +20,6 @@ class Saper:
             self.steps.put(step)
 
     def pickUp(self, item):
-        print(item)
         self.equipment.append(item)
 
     def setSpriteDirection(self, direction):

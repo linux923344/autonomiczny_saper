@@ -7,6 +7,7 @@ from modules.Board.Direction import Direction
 from modules.MapObjects.Tool import Tool
 from modules.Board.Point import Point
 from modules.Board.DirectionCalculator import DirectionCalculator
+from modules.Board.EquipmentGui import EquipmentGui
 
 DISPLACEMENT_Y = 45
 DISPLACEMENT_X = 33
@@ -18,6 +19,7 @@ class Board:
         self.x = x
         self.y = y
         self.board = [[None for j in range(12)]for i in range(8)]
+        self.eq_gui = EquipmentGui(1280, 150)
 
     def start(self):
         pygame.init()
@@ -30,6 +32,7 @@ class Board:
             pygame.time.delay(100)
 
             self.renderSprites()
+            self.renderGui()
             pygame.display.update()
 
             if(not self.player.steps.empty()):
@@ -80,6 +83,7 @@ class Board:
     def addPlayer(self, player_object, x, y):
         self.board[y][x] = player_object
         self.player = player_object
+        self.eq_gui.setEquipment(self.player.equipment)
 
     def renderSprites(self):
         self.window.blit(self.background, (0, 0))
@@ -89,6 +93,13 @@ class Board:
                     sprite = pygame.image.load(x.sprite).convert_alpha()
                     self.window.blit(sprite, (DISPLACEMENT_X + index_x*SQUARE_SIZE,
                                               DISPLACEMENT_Y + index_y*SQUARE_SIZE))
+
+    def renderGui(self):
+        renderList = self.eq_gui.getRenderList()
+        for control in renderList:
+            sprite = pygame.image.load(control.sprite).convert_alpha()
+            self.window.blit(
+                sprite, (self.eq_gui.x + control.x, self.eq_gui.y + control.y))
 
     def close(self):
         self.run = False
