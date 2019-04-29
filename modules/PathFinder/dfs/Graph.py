@@ -1,4 +1,4 @@
-from modules.PathFinder.Vertex import Vertex
+from modules.PathFinder.dfs.Vertex import Vertex
 from modules.Board.Direction import Direction
 
 
