@@ -24,7 +24,7 @@ from modules.PathFinder.breath-first-search import PotrzebnaKlasa
 
 ...
 
-  def getPathToByBestSearch(self,x,y):
+  def getPathToByBreathSearch(self,x,y):
     return PotrzebnaKlasa.search(x,y)
 ```
 
@@ -42,7 +42,7 @@ steps = PathFinder.getPathToByDfs(board, 3, 6)
 na np.
 
 ```
-steps = PathFinder.getPathToByBestSearch(board, 3, 6)
+steps = PathFinder.getPathToByBreathSearch(board, 3, 6)
 ```
 
 
