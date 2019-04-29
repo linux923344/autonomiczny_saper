@@ -1,32 +1,32 @@
 Wystarczy napisać tutaj skrypt pythonowy. Nawet nie musibyć to klasa chociaż miłoby było, nawet jeżeli nie macie pojęcia jak to zrobić i chcecie zrobić zwykłą przejebaną jak chuj funkcje na 600 linijek to polecam zrobić np coś takeigo:
 
-'
+```
 class BestFirst:
 
 @staticmethod
-&nbsp;&nbsp;&nbsp;&nbsp;def search(edges, edge):
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;I lecimy z kodzikiem
-'
+  def search(edges, edge):
+    I lecimy z kodzikiem
+```
 Wówczas moge w kodzie zrobić coś takiego
 
-'
+```
 from modules.PathFinder.best-first-search import BestFirst
 BestFirst.search(edges, edge)
-'
+```
 
 Zachowujemy wtedy "obiektowość", a ty nie musisz umieć obiektowość. Generalnie win-win
 Aczkolwiek nie jest to konieczne możesz zrobić kilka klas, albo jedną funkcje nie powinno nam to stworzc większych problemów
 
 Gdy algorytm zostanie zaimplementowany należy w klasie modules.PathFinder.PathFinder dodać metode:
 
-'
+```
 from modules.PathFinder.best-first-search import PotrzebnaKlasa
 
 ...
 
-&nbsp;&nbsp;&nbsp;&nbsp;def getPathToByBestSearch(self,x,y):
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return PotrzebnaKlasa.search(x,y)
-'
+  def getPathToByBestSearch(self,x,y):
+    return PotrzebnaKlasa.search(x,y)
+```
 
 Przykładowa implementacja nie traktować dosłownie.
 
