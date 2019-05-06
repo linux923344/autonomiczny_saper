@@ -24,7 +24,7 @@ from modules.PathFinder.breath-first-search import PotrzebnaKlasa
 
 ...
 
-  def getPathToByBestSearch(self,x,y):
+  def getPathToByBreathSearch(self,x,y):
     return PotrzebnaKlasa.search(x,y)
 ```
 
@@ -32,5 +32,18 @@ Przykładowa implementacja nie traktować dosłownie.
 
 Zwracać ma ona listę kroków, jaką postać ma pokonać by dostać się do pukty x,y.
 Pamiętaj o tym, że punkt (0,0) to lewy górny róg.
+
+Gdy skończycie implementacje by sprawdzić czy działa w mainie wystarczy zamienić 
+
+```
+steps = PathFinder.getPathToByDfs(board, 3, 6)
+```
+
+na np.
+
+```
+steps = PathFinder.getPathToByBreathSearch(board, 3, 6)
+```
+
 
 W module dfs dodam readme z krótkim wytłumaczeniem tego co ja zrobiłem możecie się tym sugerować jak nie będziecie mieli lepszego pomysłu, aczkolwiek moja implementacja również jest daleka od ideału i musze tam kilka rzeczy zmienić.
