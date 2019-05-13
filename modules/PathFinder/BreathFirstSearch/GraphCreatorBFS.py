@@ -1,9 +1,9 @@
-from modules.PathFinder.dfs.Vertex import Vertex
-from modules.PathFinder.dfs.Graph import Graph
+from modules.PathFinder.BreathFirstSearch.Vertex import Vertex
+from modules.PathFinder.BreathFirstSearch.GraphBFS import GraphBFS
 from modules.MapObjects.Tool import Tool
 
 
-class GraphCreator:
+class GraphCreatorBFS:
     def __init__(self, board):
         self.vertices = []
         self.board = board
@@ -43,4 +43,4 @@ class GraphCreator:
         return dictionary
 
     def createGraph(self):
-        return Graph(self.getAllSuccessorsList())
+        return GraphBFS(self.getAllSuccessorsList())
