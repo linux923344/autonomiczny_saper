@@ -1,5 +1,6 @@
 from modules.PathFinder.BestFirstSearch.Vertex import Vertex
 from modules.Board.Direction import Direction
+from modules.Board.DirectionCalculator import DirectionCalculator
 from queue import PriorityQueue
 
 
@@ -7,6 +8,27 @@ class Graph:
     def __init__(self, successorsList):
         self.successorsList = successorsList
         self.q = PriorityQueue()
+
+    def setDestinations(self, destinations):
+        self.destinations = destinations
+
+    def setPiorities(self):
+        for v in self.successorsList:
+            for successor in self.successorsList[v]:
+                direction = DirectionCalculator(
+                    v.x, v.y, successor.x, successor.y)
+                distance = self.getNearestDestination(v, direction)
+
+    def getNearestDestination(self, v, direction):
+        if(direction == Direction.UP):
+            pass
+        elif(direction == Direction.DOWN):
+            pass
+        elif(direction == Direction.LEFT):
+            pass
+        elif(direction == Direction.RIGHT):
+            pass
+        return False
 
     def bestFirstSearch(self):
         startv = list(self.successorsList.keys())[0]

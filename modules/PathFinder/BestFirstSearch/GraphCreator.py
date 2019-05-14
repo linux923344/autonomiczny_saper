@@ -1,6 +1,8 @@
 from modules.PathFinder.BestFirstSearch.Vertex import Vertex
 from modules.PathFinder.BestFirstSearch.Graph import Graph
 from modules.MapObjects.Tool import Tool
+from modules.PathFinder.Destination import Destination
+from modules.MapObjects.Bomb import Bomb
 
 
 class GraphCreator:
@@ -42,5 +44,30 @@ class GraphCreator:
             dictionary[v] = successors
         return dictionary
 
+    def getAllDestinations(self):
+        destinations = []
+        for indexline, line in enumerate(self.board.board):
+            for indexrow, row in enumerate(line):
+                if(type(row) is Tool):
+                    d = Destination(indexrow, indexline)
+                    destinations.append(d)
+                elif(type(row) is Bomb):
+                    v = self.getBombNextVertex(indexrow, indexline)
+                    d = Destination(v.x, v.y)
+                    destinations.append(d)
+        return destinations
+
+    def getBombNextVertex(self, x, y):
+        if not (self.getVertexByCords(x+1, y) == False):
+            return self.getVertexByCords(x+1, y)
+        elif not(self.getVertexByCords(x-1, y) == False):
+            return self.getVertexByCords(x-1, y)
+        elif not(self.getVertexByCords(x, y+1)):
+            return self.getVertexByCords(x, y+1)
+        elif not(self.getVertexByCords(x, y-1)):
+            return self.getVertexByCords(x, y-1)
+
     def createGraph(self):
-        return Graph(self.getAllSuccessorsList())
+        graph = Graph(self.getAllSuccessorsList())
+        graph.setDestinations(self.getAllDestinations())
+        return graph
