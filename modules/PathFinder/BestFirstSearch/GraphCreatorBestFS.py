@@ -1,11 +1,11 @@
 from modules.PathFinder.BestFirstSearch.Vertex import Vertex
-from modules.PathFinder.BestFirstSearch.Graph import Graph
+from modules.PathFinder.BestFirstSearch.GraphBestFS import GraphBestFS
 from modules.MapObjects.Tool import Tool
 from modules.PathFinder.Destination import Destination
 from modules.MapObjects.Bomb import Bomb
 
 
-class GraphCreator:
+class GraphCreatorBestFS:
     def __init__(self, board):
         self.vertices = []
         self.board = board
@@ -68,6 +68,7 @@ class GraphCreator:
             return self.getVertexByCords(x, y-1)
 
     def createGraph(self):
-        graph = Graph(self.getAllSuccessorsList())
+        graph = GraphBestFS(self.getAllSuccessorsList())
         graph.setDestinations(self.getAllDestinations())
+        graph.setPriorities()
         return graph

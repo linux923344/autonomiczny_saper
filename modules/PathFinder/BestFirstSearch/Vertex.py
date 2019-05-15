@@ -20,3 +20,15 @@ class Vertex:
             return True
         else:
             return not(self == other)
+
+    def __lt__(self, other):
+        if(self.priority < other.priority):
+            return True
+        else:
+            return False
+
+    def __gt__(self, other):
+        if(self.priority > other.priority):
+            return True
+        else:
+            return False
