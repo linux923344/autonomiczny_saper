@@ -1,0 +1,8 @@
+3 | LeftCell:1 UpCell:1 RightCell:0 DownCell:1
+3 | LeftCell:1 UpCell:1 RightCell:1 DownCell:1
+3 | LeftCell:1 UpCell:1 RightCell:0 DownCell:1
+3 | LeftCell:1 UpCell:1 RightCell:0 DownCell:1
+0 | LeftCell:1 UpCell:1 RightCell:1 DownCell:1
+0 | LeftCell:1 UpCell:1 RightCell:1 DownCell:1
+3 | LeftCell:1 UpCell:1 RightCell:1 DownCell:1
+3 | LeftCell:1 UpCell:0 RightCell:1 DownCell:1

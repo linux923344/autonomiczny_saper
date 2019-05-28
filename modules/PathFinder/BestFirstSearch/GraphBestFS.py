@@ -62,15 +62,23 @@ class GraphBestFS:
     def getPathTo(self, v):
         vpoint = v
         path = []
+
         while(vpoint.parent != None):
+
             if(vpoint.x < vpoint.parent.x):
                 path.append(Direction.LEFT)
+
             elif(vpoint.x > vpoint.parent.x):
                 path.append(Direction.RIGHT)
+
             elif(vpoint.y > vpoint.parent.y):
+
                 path.append(Direction.DOWN)
             else:
+
                 path.append(Direction.UP)
+
             vpoint = vpoint.parent
+
         path.reverse()
         return path
