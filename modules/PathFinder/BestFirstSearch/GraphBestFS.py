@@ -9,6 +9,7 @@ class GraphBestFS:
     def __init__(self, successorsList):
         self.successorsList = successorsList
         self.q = PriorityQueue()
+        self.currentVertex = None
 
     def setDestinations(self, destinations):
         self.destinations = destinations
@@ -46,8 +47,7 @@ class GraphBestFS:
                     distance = min(distance, current_distance)
         return distance
 
-    def bestFirstSearch(self):
-        startv = list(self.successorsList.keys())[0]
+    def __bestFirstSearch(self, startv):
         self.q.put(startv)
         startv.visited = True
         while not self.q.empty():
@@ -58,6 +58,10 @@ class GraphBestFS:
                     self.q.put(successor)
                     successor.visited = True
                     successor.parent = v
+
+    def bestFirstSearch(self):
+        startv = list(self.successorsList.keys())[0]
+        self.__bestFirstSearch(startv)
 
     def getPathTo(self, v):
         vpoint = v
@@ -82,3 +86,28 @@ class GraphBestFS:
 
         path.reverse()
         return path
+
+    def resetSearch(self):
+        for v in self.successorsList:
+            v.visited = False
+            v.parent = None
+            v.priority = None
+        self.setPriorities()
+
+    def getVertexByCords(self, x, y):
+        for v in self.successorsList:
+            if(v.x == x and v.y == y):
+                return v
+
+    def getWholePath(self):
+        finalPath = []
+        startv = list(self.successorsList.keys())[0]
+        self.currentVertex = startv
+        for destination in self.destinations:
+            self.resetSearch()
+            self.__bestFirstSearch(self.currentVertex)
+            goalVertex = self.getVertexByCords(destination.x, destination.y)
+            finalPath += self.getPathTo(goalVertex)
+            self.currentVertex = goalVertex
+
+        return finalPath

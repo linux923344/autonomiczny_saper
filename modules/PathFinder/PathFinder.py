@@ -25,9 +25,9 @@ class PathFinder:
         return steps
 
     @staticmethod
-    def getPathToByBestFirstSearch(board, x, y):
+    def getPathToByBestFirstSearch(board):
         graphCreator = GraphCreatorBestFS(board)
         graph = graphCreator.createGraph()
         graph.bestFirstSearch()
-        steps = graph.getPathTo(graphCreator.getVertexByCords(x, y))
+        steps = graph.getWholePath()
         return steps
