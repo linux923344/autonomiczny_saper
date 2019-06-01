@@ -25,15 +25,19 @@ class GraphCreatorBestFS:
         successors = []
         if v.y < 7 and self.board.board[v.y+1][v.x] == None or type(self.board.board[v.y+1][v.x]) is Tool:
             successor = self.getVertexByCords(v.x, v.y+1)
+            successor.typeOfField = type(self.board.board[v.y+1][v.x])
             successors.append(successor)
         if v.y > 0 and self.board.board[v.y-1][v.x] == None or type(self.board.board[v.y-1][v.x]) is Tool:
             successor = self.getVertexByCords(v.x, v.y-1)
+            successor.typeOfField = type(self.board.board[v.y-1][v.x])
             successors.append(successor)
         if v.x < 11 and self.board.board[v.y][v.x + 1] == None or type(self.board.board[v.y][v.x + 1]) is Tool:
             successor = self.getVertexByCords(v.x + 1, v.y)
+            successor.typeOfField = type(self.board.board[v.y][v.x+1])
             successors.append(successor)
         if v.x > 0 and self.board.board[v.y][v.x - 1] == None or type(self.board.board[v.y][v.x - 1]) is Tool:
             successor = self.getVertexByCords(v.x - 1, v.y)
+            successor.typeOfField = type(self.board.board[v.y][v.x-1])
             successors.append(successor)
         return successors
 

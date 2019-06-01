@@ -4,6 +4,7 @@ from modules.Board.DirectionCalculator import DirectionCalculator
 from modules.VowpalVabbit.DataCreator import DataCreator
 from modules.VowpalVabbit.CellState import CellState
 from queue import PriorityQueue
+from modules.MapObjects.Tool import Tool
 import math
 
 
@@ -94,8 +95,13 @@ class GraphBestFS:
 
             for yindex in range(-3, 3):
                 for xindex in range(-3, 3):
-                    if(self.getVertexByCords(vpoint.parent.x + xindex, vpoint.parent.y + yindex) != False):
-                        state.cells[yindex+3][xindex+3] = 1
+                    v = self.getVertexByCords(
+                        vpoint.parent.x + xindex, vpoint.parent.y + yindex)
+                    if(v != False):
+                        if(v.typeOfField == Tool):
+                            state.cells[yindex+3][xindex+3] = 2
+                        else:
+                            state.cells[yindex+3][xindex+3] = 1
 
             states.append(state)
 

@@ -5,6 +5,7 @@ class Vertex:
         self.visited = False
         self.parent = None
         self.priority = None
+        self.typeOfField = None
 
     def __hash__(self):
         return hash((self.x, self.y))
