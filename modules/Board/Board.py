@@ -8,6 +8,8 @@ from modules.MapObjects.Tool import Tool
 from modules.Board.Point import Point
 from modules.Board.DirectionCalculator import DirectionCalculator
 from modules.Board.EquipmentGui import EquipmentGui
+from modules.Board.WalkingType import WalkingType
+from modules.VowpalVabbit.VowpalPredicter import VowpalPredicter
 
 DISPLACEMENT_Y = 45
 DISPLACEMENT_X = 33
@@ -18,8 +20,13 @@ class Board:
     def __init__(self, x, y):
         self.x = x
         self.y = y
+        self.walkingType = WalkingType.PATH_FINDER
         self.board = [[None for j in range(12)]for i in range(8)]
         self.eq_gui = EquipmentGui(1280, 125)
+
+    def setMachineLearningWalkning(self):
+        self.walkingType = WalkingType.MAECHINE_LEARNING
+        self.walkingPredicter = VowpalPredicter(self)
 
     def start(self):
         pygame.init()
@@ -34,6 +41,9 @@ class Board:
             self.renderSprites()
             self.renderGui()
             pygame.display.update()
+
+            if(self.walkingType == WalkingType.MAECHINE_LEARNING):
+                self.walkingPredicter.predict()
 
             if(not self.player.steps.empty()):
                 direction = self.player.steps.get()

@@ -93,8 +93,8 @@ class GraphBestFS:
                 path.append(Direction.UP)
                 state.result = 1
 
-            for yindex in range(-3, 3):
-                for xindex in range(-3, 3):
+            for yindex in range(-3, 4):
+                for xindex in range(-3, 4):
                     v = self.getVertexByCords(
                         vpoint.parent.x + xindex, vpoint.parent.y + yindex)
                     if(v != False):
