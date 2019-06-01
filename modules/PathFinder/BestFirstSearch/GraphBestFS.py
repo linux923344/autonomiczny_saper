@@ -92,18 +92,10 @@ class GraphBestFS:
                 path.append(Direction.UP)
                 state.result = 1
 
-            for successor in self.successorsList[vpoint.parent]:
-                direction = DirectionCalculator.getDirectionByChords(
-                    vpoint.parent.x, vpoint.parent.y, successor.x, successor.y)
-
-                if(direction == Direction.DOWN):
-                    state.downCell = 1
-                if(direction == Direction.UP):
-                    state.upCell = 1
-                if(direction == Direction.LEFT):
-                    state.leftCell = 1
-                if(direction == Direction.RIGHT):
-                    state.rightCell = 1
+            for yindex in range(-3, 3):
+                for xindex in range(-3, 3):
+                    if(self.getVertexByCords(vpoint.parent.x + xindex, vpoint.parent.y + yindex) != False):
+                        state.cells[yindex+3][xindex+3] = 1
 
             states.append(state)
 
@@ -124,9 +116,14 @@ class GraphBestFS:
         self.setPriorities()
 
     def getVertexByCords(self, x, y):
+        if(x < 0 or x > 11 or y < 0 or y > 7):
+            return False
+
         for v in self.successorsList:
             if(v.x == x and v.y == y):
                 return v
+
+        return False
 
     def getWholePath(self):
         finalPath = []

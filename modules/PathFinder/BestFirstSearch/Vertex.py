@@ -16,7 +16,7 @@ class Vertex:
             return (self.x, self.y) == (other.x, other.y)
 
     def __ne__(self, other):
-        if(other == None):
+        if(other == None or other == False):
             return True
         else:
             return not(self == other)
