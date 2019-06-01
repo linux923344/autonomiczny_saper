@@ -6,6 +6,7 @@ from random import *
 from modules.Board.Direction import Direction
 from modules.MapObjects.Tool import Tool
 from modules.Board.Point import Point
+from modules.MapObjects.Saper import Saper
 from modules.Board.DirectionCalculator import DirectionCalculator
 from modules.Board.EquipmentGui import EquipmentGui
 from modules.Board.WalkingType import WalkingType
@@ -42,12 +43,13 @@ class Board:
             self.renderGui()
             pygame.display.update()
 
-            if(self.walkingType == WalkingType.MAECHINE_LEARNING):
-                self.walkingPredicter.predict()
-
             if(not self.player.steps.empty()):
                 direction = self.player.steps.get()
                 self.walk(direction)
+
+            if(self.walkingType == WalkingType.MAECHINE_LEARNING):
+                step = self.walkingPredicter.predict()
+                self.player.addStep(step)
 
             for event in pygame.event.get():
                 if(event.type == pygame.QUIT):

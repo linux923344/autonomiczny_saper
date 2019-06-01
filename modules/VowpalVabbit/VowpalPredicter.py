@@ -3,6 +3,7 @@ from modules.MapObjects.Tool import Tool
 from modules.MapObjects.Saper import Saper
 from modules.VowpalVabbit.CellState import CellState
 from modules.VowpalVabbit.DataCreator import DataCreator
+from modules.Board.Direction import Direction
 
 
 class VowpalPredicter:
@@ -29,9 +30,23 @@ class VowpalPredicter:
 
         prediction = subprocess.check_output(
             "vw -i ./models/walking.model -t ./currentState -p /dev/stdout --quiet", shell=True)
+        prediction = str(prediction)
+        prediction = prediction.replace("b'", "")
+        prediction = prediction.replace("\\", "")
+        prediction = prediction.replace("n'", "")
+        prediction = round(float(prediction))
         print(prediction)
 
         subprocess.os.remove("currentState")
+
+        if(prediction == 0):
+            return Direction.LEFT
+        if(prediction == 1):
+            return Direction.UP
+        if(prediction == 2):
+            return Direction.RIGHT
+        if(prediction == 3):
+            return Direction.DOWN
 
     def __doesVertexExist(self, x, y):
         if(x < 0 or x > 11 or y < 0 or y > 7):

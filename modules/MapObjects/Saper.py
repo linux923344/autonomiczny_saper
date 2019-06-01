@@ -19,6 +19,9 @@ class Saper:
         for step in stepsList:
             self.steps.put(step)
 
+    def addStep(self, step):
+        self.steps.put(step)
+
     def pickUp(self, item):
         self.equipment.append(item)
 
