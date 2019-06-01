@@ -1,6 +1,8 @@
 from modules.PathFinder.BestFirstSearch.Vertex import Vertex
 from modules.Board.Direction import Direction
 from modules.Board.DirectionCalculator import DirectionCalculator
+from modules.VowpalVabbit.DataCreator import DataCreator
+from modules.VowpalVabbit.CellState import CellState
 from queue import PriorityQueue
 import math
 
@@ -10,6 +12,7 @@ class GraphBestFS:
         self.successorsList = successorsList
         self.q = PriorityQueue()
         self.currentVertex = None
+        self.learningData = DataCreator()
 
     def setDestinations(self, destinations):
         self.destinations = destinations
@@ -66,23 +69,49 @@ class GraphBestFS:
     def getPathTo(self, v):
         vpoint = v
         path = []
+        states = []
 
         while(vpoint.parent != None):
 
+            state = CellState()
+
             if(vpoint.x < vpoint.parent.x):
                 path.append(Direction.LEFT)
+                state.result = 0
 
             elif(vpoint.x > vpoint.parent.x):
                 path.append(Direction.RIGHT)
+                state.result = 2
 
             elif(vpoint.y > vpoint.parent.y):
 
                 path.append(Direction.DOWN)
+                state.result = 3
             else:
 
                 path.append(Direction.UP)
+                state.result = 1
+
+            for successor in self.successorsList[vpoint.parent]:
+                direction = DirectionCalculator.getDirectionByChords(
+                    vpoint.parent.x, vpoint.parent.y, successor.x, successor.y)
+
+                if(direction == Direction.DOWN):
+                    state.downCell = 1
+                if(direction == Direction.UP):
+                    state.upCell = 1
+                if(direction == Direction.LEFT):
+                    state.leftCell = 1
+                if(direction == Direction.RIGHT):
+                    state.rightCell = 1
+
+            states.append(state)
 
             vpoint = vpoint.parent
+
+        states.reverse()
+        for state in states:
+            self.learningData.addData(state)
 
         path.reverse()
         return path
@@ -111,3 +140,6 @@ class GraphBestFS:
             self.currentVertex = goalVertex
 
         return finalPath
+
+    def savePathToFile(self, name):
+        self.learningData.save(name)

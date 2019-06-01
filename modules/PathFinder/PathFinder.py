@@ -30,4 +30,5 @@ class PathFinder:
         graph = graphCreator.createGraph()
         graph.bestFirstSearch()
         steps = graph.getWholePath()
+        graph.savePathToFile("sampleDatas/test.txt")
         return steps
