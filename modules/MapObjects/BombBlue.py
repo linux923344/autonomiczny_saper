@@ -8,3 +8,4 @@ class BombBlue(Bomb):
     def __init__(self):
         self.sprite = 'sprites/bombB.png'
         self.code = 0
+        super(BombBlue, self).__init__()

@@ -11,6 +11,7 @@ from modules.Board.DirectionCalculator import DirectionCalculator
 from modules.Board.EquipmentGui import EquipmentGui
 from modules.Board.WalkingType import WalkingType
 from modules.VowpalVabbit.VowpalPredicter import VowpalPredicter
+from modules.MapObjects.Bomb import Bomb
 
 DISPLACEMENT_Y = 45
 DISPLACEMENT_X = 33
@@ -46,6 +47,7 @@ class Board:
             if(not self.player.steps.empty()):
                 direction = self.player.steps.get()
                 self.walk(direction)
+                self.tickBombs()
 
             if(self.walkingType == WalkingType.MAECHINE_LEARNING):
                 step = self.walkingPredicter.predict()
@@ -105,6 +107,9 @@ class Board:
                     sprite = pygame.image.load(x.sprite).convert_alpha()
                     self.window.blit(sprite, (DISPLACEMENT_X + index_x*SQUARE_SIZE,
                                               DISPLACEMENT_Y + index_y*SQUARE_SIZE))
+                if(x.__class__.__base__ is Bomb):
+                    self.renderText(str(x.timer), Bomb.X_DISPLACEMENT + DISPLACEMENT_X + index_x *
+                                    SQUARE_SIZE, Bomb.Y_DISPLACEMENT + DISPLACEMENT_Y + index_y*SQUARE_SIZE)
 
     def renderGui(self):
         renderList = self.eq_gui.getRenderList()
@@ -113,6 +118,17 @@ class Board:
             self.window.blit(
                 sprite, (self.eq_gui.x + control.x, self.eq_gui.y + control.y))
 
+    def renderText(self, text, x, y):
+        pygame.font.init()
+        myfont = pygame.font.SysFont('Comic Sans MS', 24)
+        self.window.blit(myfont.render(text, False, (255, 255, 255)), (x, y))
+
     def close(self):
         self.run = False
         pygame.quit()
+
+    def tickBombs(self):
+        for y in self.board:
+            for x in y:
+                if(x.__class__.__base__ is Bomb):
+                    x.tick()

@@ -19,12 +19,15 @@ class MapReader:
                 #print(indexline, indexrow)
                 if row == "R":
                     bomb = BombRed()
+                    bomb.setTimer(30)
                     board.addObject(bomb, indexrow, indexline)
                 elif row == "B":
                     bomb = BombBlue()
+                    bomb.setTimer(30)
                     board.addObject(bomb, indexrow, indexline)
                 elif row == "Y":
                     bomb = BombYellow()
+                    bomb.setTimer(30)
                     board.addObject(bomb, indexrow, indexline)
                 elif row == "S":
                     stone = Stone()

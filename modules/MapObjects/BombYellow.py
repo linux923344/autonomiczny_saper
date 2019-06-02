@@ -9,3 +9,4 @@ class BombYellow(Bomb):
         # dodaj .convert_alpha() w board
         self.sprite = 'sprites/bombY.png'
         self.code = 0
+        super(BombYellow, self).__init__()
