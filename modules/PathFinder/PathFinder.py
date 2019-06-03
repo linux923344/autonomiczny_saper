@@ -25,10 +25,10 @@ class PathFinder:
         return steps
 
     @staticmethod
-    def getPathToByBestFirstSearch(board):
+    def getPathToByBestFirstSearch(board, learningDataName="test"):
         graphCreator = GraphCreatorBestFS(board)
         graph = graphCreator.createGraph()
         graph.bestFirstSearch()
         steps = graph.getWholePath()
-        graph.savePathToFile("sampleDatas/test.txt")
+        graph.savePathToFile("sampleDatas/"+learningDataName + "Datas")
         return steps
