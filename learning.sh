@@ -51,4 +51,5 @@ createSampleDatasAll && echo -e "$(date) Created Simple Datas"
 echo ""
 vwPredictions && echo -e "$(date) Done predictions"
 deleteFiles
+echo ""
 echo -e "-------------- DONE --------------"
