@@ -3,6 +3,7 @@ from modules.Board.Direction import Direction
 from modules.Board.DirectionCalculator import DirectionCalculator
 from modules.VowpalVabbit.DataCreator import DataCreator
 from modules.VowpalVabbit.CellState import CellState
+from modules.VowpalVabbit.TreeCreator import TreeCreator
 from queue import PriorityQueue
 from modules.MapObjects.Tool import Tool
 import math
@@ -14,6 +15,7 @@ class GraphBestFS:
         self.q = PriorityQueue()
         self.currentVertex = None
         self.learningData = DataCreator()
+        self.treeModelCreator = TreeCreator()
 
     def setDestinations(self, destinations):
         self.destinations = destinations
@@ -110,6 +112,7 @@ class GraphBestFS:
         states.reverse()
         for state in states:
             self.learningData.addData(state)
+            self.treeModelCreator.addData(state)
 
         path.reverse()
         return path
@@ -146,3 +149,4 @@ class GraphBestFS:
 
     def savePathToFile(self, name):
         self.learningData.save(name)
+        self.treeModelCreator.save("./models/walkingdecision.model.joblib")
