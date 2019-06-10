@@ -11,6 +11,7 @@ from modules.Board.DirectionCalculator import DirectionCalculator
 from modules.Board.EquipmentGui import EquipmentGui
 from modules.Board.WalkingType import WalkingType
 from modules.VowpalVabbit.VowpalPredicter import VowpalPredicter
+from modules.VowpalVabbit.DecisionTreePredicter import DecisionTreePredicter
 from modules.MapObjects.Bomb import Bomb
 
 DISPLACEMENT_Y = 45
@@ -26,9 +27,12 @@ class Board:
         self.board = [[None for j in range(12)]for i in range(8)]
         self.eq_gui = EquipmentGui(1280, 125)
 
-    def setMachineLearningWalkning(self):
-        self.walkingType = WalkingType.MAECHINE_LEARNING
-        self.walkingPredicter = VowpalPredicter(self)
+    def setMachineLearningWalkning(self, wtype):
+        self.walkingType = wtype
+        if(wtype == WalkingType.VOWLPAL_WALKER):
+            self.walkingPredicter = VowpalPredicter(self)
+        if(wtype == WalkingType.DECISION_TREE_WALKER):
+            self.walkingPredicter = DecisionTreePredicter(self)
 
     def start(self):
         pygame.init()
@@ -49,7 +53,7 @@ class Board:
                 self.walk(direction)
                 self.tickBombs()
 
-            if(self.walkingType == WalkingType.MAECHINE_LEARNING):
+            if(self.walkingType == WalkingType.VOWLPAL_WALKER or self.walkingType == WalkingType.DECISION_TREE_WALKER):
                 step = self.walkingPredicter.predict()
                 self.player.addStep(step)
 

@@ -25,9 +25,9 @@ class GameStarter:
             steps = PathFinder.getPathToByDfs(board, 3, 6)
             s.addSteps(steps)
         elif(algorytmType == "AlgorythmType.VOWPAL_WABBIT"):
-            board.setMachineLearningWalkning()
+            board.setMachineLearningWalkning(WalkingType.VOWLPAL_WALKER)
         elif(algorytmType == "AlgorythmType.DECYSION_TREE"):
-            pass
+            board.setMachineLearningWalkning(WalkingType.DECISION_TREE_WALKER)
 
         board.addPlayer(s, 5, 0)
         board.start()
