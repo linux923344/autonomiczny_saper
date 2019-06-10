@@ -8,10 +8,15 @@
 \usepackage{fancyhdr}
 \usepackage{graphicx}
 \usepackage{enumitem}
+\usepackage{mathtools, etoolbox}
+\usepackage{blkarray}
+\usepackage[showframe, nomarginpar]{geometry}
+
 
 \setlist[itemize]{noitemsep, topsep=5pt}
 \geometry{a4paper,total={170mm,257mm},left=20mm,top=20mm}
-
+\setlist[itemize]{itemsep=7pt}
+\setlist[enumerate]{itemsep=7pt}
 \graphicspath{ {../} }
 
 \pagestyle{fancy}
@@ -29,25 +34,91 @@
 \newenvironment{coun}[1][]{\refstepcounter{coun}\par\medskip
 {\noindent\textbf{\thecoun #1. }}\leftskip=0em\rightskip=0em }{\par\medskip}
 
+
+\newcommand\tabitem{\ifbool{firstrow}{\relax}{\\[\itemsep]}\boolfalse{firstrow}\makebox[\labelwidth][r]{\textbullet}\hspace*{\labelsep}}
+\newbool{firstrow}
+\newenvironment{braceditemize}[1][]{%
+\booltrue{firstrow}
+\vspace*{\topsep}\par\noindent
+\setlength\BAextrarowheight{\parsep}\begin{blockarray}{@{}l <{\enspace}\Right{\}}{#1}}}
+{\rule[-\itemsep-\parsep]{0pt}{\itemsep + \parsep}\end{blockarray}}
+
+
 \begin{document}
 \title{Raport \\  (środowisko agenta i reprezentacja wiedzy)}
 \author{Marcin Woźniak \\ Filip Izydorczyk \\ Hubert Wrzesiński \\ Przemysław Fierek\\ \\ \textbf{Grupa 5} }
 \maketitle
 \thispagestyle{firststyle}
-\vspace{10}
+\vspace{30}
 Repozytorium: \url{https://github.com/linux923344/autonomiczny_saper/}} \\
+\vspace{30}
 
 Spis klas użytych w projekcie:
 \begin{enumerate}
-	\item {\textbf{Board} - jako argumenty przyjmuje X i Y, które są rozmiarem renderowanego okna. Klasa odpowiada za renderowanie mapy i zarządzanie obiektami na niej.}
-	\item {\textbf{Bomb} (BombRed, BombBlue, BombYellow) - obiekt odpowiedzialny za renderowanie oraz logikę bomby}
-	\item{\textbf{Direction} - enum, który daje nam informacje, w którym kierunku ma się poruszać postać.}
-	\item{\textbf{MapReader} - argumentem przy jej tworzeniu jest plansza czyli obiekt typu Board, na której MapReader będzie tworzył obiekty które są przechowywane w zewnętrznym pliku.}
-	\item{\textbf{Stone} - klasa, która jest odpowiedzialna za informacje potrzebne do wyrenderowania kamienia.}
-	\item{\textbf{Tool} - klasa, która jest odpowiedzialna za informacje potrzebne do wyrenderowania narzędzia.}
-	\item{\textbf{Saper} - przechowuje informacje potrzebne do wyrenderowania Sapera, co posiada w ekwipunku oraz jakie zadania musi wykonać.}
-	\item{\textbf{PathFinder} - tworzy klasę typu Graph na podstawie podanego Boarda}
-	\item{\textbf{Graph} - klasa znajduje ścieżkę w grafie do danego punktu i zwraca listę kierunków, w jakich musi poruszać się postać aby dojść do danego punktu.}
+	\item Board
+	
+		\begin{enumerate}[label=(\roman*)]
+		\item Board - jako argumenty przyjmuje X i Y, które sa rozmiarem renderowanego okna. Klasa odpowiada za renderowanie mapy i zarzadzanie obiektami na niej.
+    		\item Direction - enum, który daje nam informacje, w którym kierunku ma sie poruszać postać.
+		\item DirectionCalculator - obliczanie następnego punktu na podstawie podanych wcześniej x i y.
+		\item EquipmentGui - klasa odpwoiedzialna za grafikę Ekwipunku
+		\item EquipmentGuiControl - klasa odpowiedzlana za zbieranie narzędzi i umieszczanie ich w ekwipunku.
+		\item GameStarter - odpowiada za wystartowanie całego programu, po wybraniu odpowiednich opcji z menu.
+		\item MapReader - argumentem przy jej tworzeniu jest plansza czyli obiekt typu Board, na której MapReader bedzie tworzy l obiekty które sa przechowywane w zewnetrznym pliku.
+		\item Point - klasa punktu
+		\item WalkingType - typ chodzenia (Za pomocą uczenia maszynowego, lub algorytmów chodzenia)
+		\end{enumerate}
+	
+	\item MapObjects
+    	
+		\begin{enumerate}[label=(\roman*)]
+		\item Bombs:
+			\begin{braceditemize}[Obiekty odpowiedzialne za renderowanie oraz logikę bomby]
+  				\tabitem BombRed
+  				\tabitem BombBlue
+  				\tabitem BombYellow
+			\end{braceditemize}
+		\item Saper - przechowuje informacje potrzebne do wyrenderowania Sapera, podnoszenie rzeczy do ekwipunku oraz jakie zadania musi wykonać.
+		\item Stone - klasa, która jest odpowiedzialna za informacje potrzebne do wyrenderowania
+kamienia.
+    		\item Tool - klasa, która jest odpowiedzialna za informacje potrzebne do wyrenderowania na-
+rzedzia.
+    		\item Water - klasa, która jest odpowiedzialna za informacje potrzebne do wyrenderowania wody.
+		\end{enumerate}
+
+	\item MenuWindow
+    		\begin{enumerate}[label=(\roman*)]
+		\item MenuWindow - klasa odpowiedzialna za wygenerowanie menu, dzięki któremu możemy wybrać mapę, po której chcemy się poruszać, oraz typ algorytmu, za pomocą któ©ego chcemy przejść daną mapę.
+		\item AlgorythmType - enum, z pomocą którego wybieramy algorytmy w MenuWindow.
+		\end{enumerate}
+	\item Path Finder
+    		\begin{enumerate}[label=(\roman*)]
+		\item BestFirstSearch
+			\begin{itemize}
+			\item Vertex - tworzy wierzchołki grafu
+			\item GraphCreatorBestFS - tworzy graf BestFirstSearch
+			\item GraphBFS - przejście po grafie BestFirstSearch
+			\end{itemize}
+		\item BreathFirstSearch
+			\begin{itemize}
+			\item Vertex - tworzy wierzchołki grafu
+			\item GraphCreatorBFS - tworzy graf BFS
+			\item GraphBFS - przejście po grafie BFS
+			\end{itemize}
+		\item DepthFirstSearch
+			\begin{itemize}
+			\item Vertex - tworzy wierzchołki grafu
+			\item GraphCreator - tworzy graf DFS
+			\item Graph - przejście po grafie DFS
+			\end{itemize}
+		\end{enumerate}
+	\item PathFinder- wywołuje poszczególne algorytmy na planszy
+	\item VowpalVabbit
+		\begin{enumerate}[label=(\roman*)]
+		\item DataCreator - klasa która tworzy dane uczące dla Vowpal Wabbit
+		\item CellState - stan komórki
+		\item VowpalPredicter - przewidywanie kolejnych kroków za pomocą Vowpala
+		\end{enumerate}
 \end{enumerate}
 \newpage 
 
@@ -100,5 +171,34 @@ Implementacja algorytmu BFS. \\
 
 Implementacja algorytmu Best-First Search. \\
 
+
+\noindent\textbf{28.05.2019 r.}
+\setcounter{coun}{0}\\
+
+Dodanie klasy tworzącej dane uczące. Agent przechodzi graf, i z każdym krokiem zapisuje stan pól znajdujących się dookoła niego w kwadracie 7x7, do pliku.\\
+
+\noindent\textbf{29.05.2019 r.}
+\setcounter{coun}{0}\\
+
+Ulepszenie algorytmu Best-First Search. Teraz nasz agent przechodzi graf zbierając po drodze wszystkie narzędzia znajdujące się na mapie\\
+
+\noindent\textbf{01.06.2019 r.}
+\setcounter{coun}{0}\\
+
+Wykorzystanie zapisanych danych uczących przy Vowpal Wabbicie, a także dodanie licznika do bomb.\\
+
+\noindent\textbf{02.06.2019 r.}
+\setcounter{coun}{0}\\
+
+Stworzenie większej ilości map do uczenia, a co za tym idzie, stworzenie większej ilości danych uczących.\\
+
+\noindent\textbf{03.06.2019 r.}
+\setcounter{coun}{0}\\
+
+Agent jest nauczony, ale nie działa perfekcyjnie.\\
+
+\noindent \textbf{Opis drzew decyzyjnych}\\
+
+\noindent \textbf{Opis Volpal Wabbit}\\
 \end{document}
 
