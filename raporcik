@@ -1,0 +1,72 @@
+28.05.2019 r.
+
+Dodanie klasy tworzącej dane uczące. Agent przechodzi graf, i z każdym krokiem zapisuje stan pól znajdujących się dookoła niego w kwadracie 7x7, do pliku
+
+29.05.2019 r.
+
+Ulepszenie algorytmu Best-First Search. Teraz nasz agent przechodzi graf zbierając po drodze wszystkie narzędzia znajdujące się na mapie
+
+01.06.2019 r.
+
+Wykorzystanie zapisanych danych uczących przy Vowpal Wabbicie, a także dodanie licznika do bomb
+
+02.06.2019 r.
+
+Stworzenie większej ilości map do uczenia, a co za tym idzie, stworzenie większej ilości danych uczących
+
+03.06.2019 r.
+
+Agent jest nauczony, ale nie działa perfekcyjnie
+
+
+Spis klas użytych w projekcie: (!!!)
+
+1. Board
+    I) Board - jako argumenty przyjmuje X i Y, które sa rozmiarem renderowanego okna. Klasa odpowiada za renderowanie mapy i zarzadzanie obiektami na niej.
+    II) Direction - enum, który daje nam informacje, w którym kierunku ma sie poruszać postać.
+    III) DirectionCalculator - obliczanie następnego punktu na podstawie podanych wcześniej x i y.
+    IV) EquipmentGui - klasa odpwoiedzialna za grafikę Ekwipunku
+    V) EquipmentGuiControl - klasa odpowiedzlana za zbieranie narzędzi i umieszczanie ich w ekwipunku.
+    VI) GameStarter - odpowiada za wystartowanie całego programu, po wybraniu odpowiednich opcji z menu.
+    VII) MapReader - argumentem przy jej tworzeniu jest plansza czyli obiekt typu Board, na której MapReader bedzie tworzy l obiekty które sa przechowywane w zewnetrznym pliku.
+    VIII) Point - klasa punktu
+    IX) WalkingType - typ chodzenia (Za pomocą uczenia maszynowego, lub algorytmów chodzenia)
+
+2. MapObjects
+    I) Bombs:
+      - BombRed           |  
+      - BombBlue          |---- obiekty odpowiedzialne za renderowanie oraz logike bomby
+      - BombYellow        | 
+    II) Saper - przechowuje informacje potrzebne do wyrenderowania Sapera, podnoszenie rzeczy do ekwipunku oraz jakie zadania musi wykonać.
+    III) Stone - klasa, która jest odpowiedzialna za informacje potrzebne do wyrenderowania
+kamienia.
+    IV) Tool - klasa, która jest odpowiedzialna za informacje potrzebne do wyrenderowania na-
+rzedzia.
+    V) Water - klasa, która jest odpowiedzialna za informacje potrzebne do wyrenderowania wody.
+
+3. MenuWindow
+    I) MenuWindow - klasa odpowiedzialna za wygenerowanie menu, dzięki któremu możemy wybrać mapę, po której chcemy się poruszać, oraz typ algorytmu, za pomocą któ©ego chcemy przejść daną mapę.
+    II) AlgorythmType - enum, z pomocą którego wybieramy algorytmy w MenuWindow.
+
+4. Path Finder
+    I) BestFirstSearch
+        - Vertex - tworzy wierzchołki grafu
+        - GraphCreatorBestFS - tworzy graf BestFirstSearch
+        - GraphBFS - przejście po grafie BestFirstSearch
+    II) BreathFirstSearch
+        - Vertex - tworzy wierzchołki grafu
+        - GraphCreatorBFS - tworzy graf BFS
+        - GraphBFS - przejście po grafie BFS
+    III) DepthFirstSearch
+        - Vertex - tworzy wierzchołki grafu
+        - GraphCreator - tworzy graf DFS
+        - Graph - przejście po grafie DFS
+
+5. PathFinder- wywołuje poszczególne algorytmy na planszy
+6. VowpalVabbit
+    I) DataCreator - klasa która tworzy dane uczące dla Vowpal Wabbit
+    II) CellState - stan komórki
+    III) VowpalPredicter - przewidywanie kolejnych kroków za pomocą Vowpala
+
+
+ 
