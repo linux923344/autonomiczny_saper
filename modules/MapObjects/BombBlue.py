@@ -7,5 +7,5 @@ from modules.MapObjects.Bomb import Bomb
 class BombBlue(Bomb):
     def __init__(self):
         self.sprite = 'sprites/bombB.png'
-        self.code = 0
+        self.defuseLevel = 2
         super(BombBlue, self).__init__()

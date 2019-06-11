@@ -5,6 +5,7 @@ class Bomb:
 
     def __init__(self):
         self.timer = 30
+        self.defuseLevel = 1
 
     def setTimer(self, time):
         self.timer = time
@@ -13,8 +14,11 @@ class Bomb:
         if(self.timer > 0):
             self.timer -= 1
 
-    def defuse(self, code):
-        if(self.code == code):
+    def defuse(self):
+        self.defuseLevel -= 1
+
+    def isDefused(self):
+        if(self.defuseLevel <= 0):
             return True
         else:
             return False

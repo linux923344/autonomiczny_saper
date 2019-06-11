@@ -48,6 +48,21 @@ class Board:
             self.renderGui()
             pygame.display.update()
 
+            currentPosition = self.getCordsOf(self.player)
+            nearestBomb = self.__getNearestBomb(
+                currentPosition.x, currentPosition.y)
+
+
+            if not (nearestBomb == False):
+                print(nearestBomb.defuseLevel)
+                print(nearestBomb.isDefused())
+                if (not (nearestBomb.isDefused())):
+
+                    print("Defusing ", nearestBomb)
+                    nearestBomb.defuse()
+                else :
+                    print(nearestBomb, " defused")
+
             if(not self.player.steps.empty()):
                 direction = self.player.steps.get()
                 self.walk(direction)
@@ -72,6 +87,18 @@ class Board:
                         self.walk(Direction.DOWN)
                     if (event.key == K_UP):
                         self.walk(Direction.UP)
+
+    def __getNearestBomb(self, x, y):
+        if(x>0 and x<11 and y>0 and y<7 ):
+            if (self.board[y+1][x].__class__.__base__ is Bomb):
+                return self.board[y+1][x]
+            if (self.board[y][x+1].__class__.__base__ is Bomb):
+                return self.board[y][x+1]
+            if (self.board[y][x-1].__class__.__base__ is Bomb):
+                return self.board[y][x-1]
+            if (self.board[y-1][x].__class__.__base__ is Bomb):
+                return self.board[y-1][x]
+        return False
 
     def walk(self, direction):
         cords = self.getCordsOf(self.player)
