@@ -59,7 +59,7 @@ class GraphCreatorBestFS:
                 if(type(row) is Tool):
                     d = Destination(indexrow, indexline)
                     destinations.append(d)
-                elif(type(row) is Bomb):
+                elif(row.__class__.__base__ is Bomb):
                     v = self.getBombNextVertex(indexrow, indexline)
                     d = Destination(v.x, v.y)
                     destinations.append(d)
@@ -70,9 +70,9 @@ class GraphCreatorBestFS:
             return self.getVertexByCords(x+1, y)
         elif not(self.getVertexByCords(x-1, y) == False):
             return self.getVertexByCords(x-1, y)
-        elif not(self.getVertexByCords(x, y+1)):
+        elif not(self.getVertexByCords(x, y+1) == False):
             return self.getVertexByCords(x, y+1)
-        elif not(self.getVertexByCords(x, y-1)):
+        elif not(self.getVertexByCords(x, y-1) == False):
             return self.getVertexByCords(x, y-1)
 
     def createGraph(self):

@@ -11,7 +11,7 @@ class Vertex:
         return hash((self.x, self.y))
 
     def __eq__(self, other):
-        if(other == None):
+        if(other == None or other == False):
             return False
         else:
             return (self.x, self.y) == (other.x, other.y)
