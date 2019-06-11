@@ -19,6 +19,11 @@ class GraphBestFS:
 
     def setDestinations(self, destinations):
         self.destinations = destinations
+        for destiny in self.destinations:
+            destinyType = self.getVertexByCords(destiny.x, destiny.y)
+            if (destinyType.typeOfField == type(None)):
+                self.destinations.remove(destiny)
+                self.destinations.append(destiny)
 
     def setPriorities(self):
         for v in self.successorsList:
