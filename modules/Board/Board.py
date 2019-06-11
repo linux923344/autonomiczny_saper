@@ -52,15 +52,13 @@ class Board:
             nearestBomb = self.__getNearestBomb(
                 currentPosition.x, currentPosition.y)
 
-
             if not (nearestBomb == False):
-                print(nearestBomb.defuseLevel)
-                print(nearestBomb.isDefused())
                 if (not (nearestBomb.isDefused())):
-
-                    print("Defusing ", nearestBomb)
-                    nearestBomb.defuse()
-                else :
+                    while(not nearestBomb.isDefused()):
+                        print("Defusing ", nearestBomb)
+                        nearestBomb.defuse()
+                        print(nearestBomb.defuseLevel)
+                else:
                     print(nearestBomb, " defused")
 
             if(not self.player.steps.empty()):
@@ -89,13 +87,17 @@ class Board:
                         self.walk(Direction.UP)
 
     def __getNearestBomb(self, x, y):
-        if(x>0 and x<11 and y>0 and y<7 ):
+
+        if(y < 7):
             if (self.board[y+1][x].__class__.__base__ is Bomb):
                 return self.board[y+1][x]
+        if(x < 11):
             if (self.board[y][x+1].__class__.__base__ is Bomb):
                 return self.board[y][x+1]
+        if(x > 0):
             if (self.board[y][x-1].__class__.__base__ is Bomb):
                 return self.board[y][x-1]
+        if(y > 0):
             if (self.board[y-1][x].__class__.__base__ is Bomb):
                 return self.board[y-1][x]
         return False
