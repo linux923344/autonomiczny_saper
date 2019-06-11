@@ -13,6 +13,7 @@ from modules.Board.WalkingType import WalkingType
 from modules.VowpalVabbit.VowpalPredicter import VowpalPredicter
 from modules.VowpalVabbit.DecisionTreePredicter import DecisionTreePredicter
 from modules.MapObjects.Bomb import Bomb
+from modules.MapObjects.BombRed import BombRed
 
 DISPLACEMENT_Y = 45
 DISPLACEMENT_X = 33
@@ -56,8 +57,11 @@ class Board:
                 if (not (nearestBomb.isDefused())):
                     while(not nearestBomb.isDefused()):
                         print("Defusing ", nearestBomb)
-                        nearestBomb.defuse()
-                        print(nearestBomb.defuseLevel)
+                        if(type(nearestBomb) is BombRed):
+                            nearestBomb.defuse()
+                        else:
+                            nearestBomb.defuse(self.player.getItem())
+
                 else:
                     print(nearestBomb, " defused")
 

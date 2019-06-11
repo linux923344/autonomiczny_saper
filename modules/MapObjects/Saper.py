@@ -25,6 +25,12 @@ class Saper:
     def pickUp(self, item):
         self.equipment.append(item)
 
+    def getItem(self):
+        if(len(self.equipment) > 0):
+            return self.equipment.pop()
+        else:
+            return False
+
     def setSpriteDirection(self, direction):
         if(direction == Direction.LEFT):
             self.sprite = self.walkLeft
