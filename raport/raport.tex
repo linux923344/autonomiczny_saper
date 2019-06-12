@@ -1,5 +1,6 @@
 \documentclass[12pt]{article}
 \usepackage{polish}
+\usepackage{polski}
 \usepackage[utf8]{inputenc}
 \usepackage{url}
 \usepackage{hyperref}
@@ -61,7 +62,7 @@ Spis klas użytych w projekcie:
 		\item Board - jako argumenty przyjmuje X i Y, które sa rozmiarem renderowanego okna. Klasa odpowiada za renderowanie mapy i zarzadzanie obiektami na niej.
     		\item Direction - enum, który daje nam informacje, w którym kierunku ma sie poruszać postać.
 		\item DirectionCalculator - obliczanie następnego punktu na podstawie podanych wcześniej x i y.
-		\item EquipmentGui - klasa odpwoiedzialna za grafikę Ekwipunku
+		\item EquipmentGui - klasa odpwoiedzialna za grafikę ekwipunku
 		\item EquipmentGuiControl - klasa odpowiedzlana za zbieranie narzędzi i umieszczanie ich w ekwipunku.
 		\item GameStarter - odpowiada za wystartowanie całego programu, po wybraniu odpowiednich opcji z menu.
 		\item MapReader - argumentem przy jej tworzeniu jest plansza czyli obiekt typu Board, na której MapReader bedzie tworzy l obiekty które sa przechowywane w zewnetrznym pliku.
@@ -118,6 +119,8 @@ rzedzia.
 		\item DataCreator - klasa która tworzy dane uczące dla Vowpal Wabbit
 		\item CellState - stan komórki
 		\item VowpalPredicter - przewidywanie kolejnych kroków za pomocą Vowpala
+		\item TreeCreator - tworzy model drzewa decyzyjnego 
+		\item DecisionTreePredicter - zwraca predykcje na podstawie wcześniej utworzonego modelu
 		\end{enumerate}
 \end{enumerate}
 \newpage 
@@ -199,6 +202,13 @@ Agent jest nauczony, ale nie działa perfekcyjnie.\\
 
 \noindent \textbf{Opis zastosowania drzew decyzyjnych}\\
 
+Podczas uruchamiania algorytmu przechodzenia mapy, ładujemy z pliku model drzewa decyzyjnego i dopasowujemy mu dla obszaru 3 kratek w każdą stronę, liczbę będącą odpowiednikiem kierunku. \\
+
+Następnie nadpisuje wcześniejszy model nowym, przy uruchomieniu programu z drzewem decyzyjnym, wczytuje model z pliku, program wysyła do modelu obszar na 3 kratki w każdą stronę, a drzewo zwraca predykcję w postaci liczby, która odpowiada danemu kierunkowi. \\ 
+
+\begin{center}
+\includegraphics[scale=0.30]{schemat.png}
+\end{center}
 
 \noindent \textbf{Opis zastosowania Vowpal Wabbit}\\
 
