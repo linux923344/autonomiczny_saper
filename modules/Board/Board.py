@@ -65,6 +65,9 @@ class Board:
                         print("Defusing ", nearestBomb)
                         if(type(nearestBomb) is BombRed):
                             nearestBomb.defuse()
+                            if (nearestBomb.isDefused()):
+                                nearestBomb.sprite = 'sprites/bombDefused.png'
+                                nearestBomb.timer = 0
                         else:
                             nearestBomb.defuse(self.player.getItem())
 
