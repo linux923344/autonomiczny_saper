@@ -1,5 +1,5 @@
 from sklearn import tree
-from joblib import dump
+from joblib import dump, load
 
 
 class TreeCreator:
@@ -11,7 +11,7 @@ class TreeCreator:
         self.datas.append(state)
 
     def save(self, name):
-        clf = tree.DecisionTreeClassifier()
+        clf = load("./models/walkingdecision.model.joblib")
         argumentsList = []
         resultsList = []
         for data in self.datas:
