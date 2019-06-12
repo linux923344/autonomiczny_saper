@@ -29,7 +29,7 @@ pip install pydotplus
 ```
 
 # Przykładowe zrzuty ekranu
-![alt text](https://github.com/linux923344/autonomiczny_saper/blob/master/raport/plansza.png)
+![alt text](https://github.com/linux923344/autonomiczny_saper/blob/master/raport/screen.png)
 
 # Raport 
-[embed]https://github.com/linux923344/autonomiczny_saper/blob/master/raport/raport.pdf [/embed]
+https://github.com/linux923344/autonomiczny_saper/blob/master/raport/raport.pdf
