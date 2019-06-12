@@ -29,11 +29,12 @@ EOF
 echo -e "Now in $line"
 setsid sh -c 'python main.py'&
 pgid=$!
-sleep 5 && kill $pgid
+sleep 2 && kill $pgid
 done
 }
 
 vwPredictions(){
+sleep 5
 cat sampleDatas/* > sampleDatasAll
 vw sampleDatasAll -l 10 -c --passes 1000000 --holdout_off -f ./models/walking.model --holdout_off 8 
 }
