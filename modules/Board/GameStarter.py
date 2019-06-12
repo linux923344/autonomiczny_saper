@@ -13,6 +13,7 @@ class GameStarter:
         board = Board(1480, 900)
         mapName = mapPaht.replace(".txt", "")
         MapReader.read("./maps/"+mapPaht, board)
+        board.initBombTimers()
         s = Saper()
 
         if(algorytmType == "AlgorythmType.BEST_FIRST_SEARCH"):

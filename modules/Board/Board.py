@@ -35,6 +35,12 @@ class Board:
         if(wtype == WalkingType.DECISION_TREE_WALKER):
             self.walkingPredicter = DecisionTreePredicter(self)
 
+    def initBombTimers(self):
+        for index_y, y in enumerate(self.board):
+            for index_x, x in enumerate(y):
+                if(x.__class__.__base__ is Bomb):
+                    x.timer = (index_y + abs(index_x - 5))*4
+
     def start(self):
         pygame.init()
         self.window = pygame.display.set_mode((self.x, self.y))
@@ -66,13 +72,21 @@ class Board:
                     print(nearestBomb, " defused")
 
             self.run = False
+            defused = 0
+            message = "GAME OVER"
             for index_y, y in enumerate(self.board):
                 for index_x, x in enumerate(y):
                     if(x.__class__.__base__ is Bomb):
+                        if(x.isDefused()):
+                            defused += 1
                         if(x.timer > 0):
                             self.run = True
+            if(defused >= 3):
+                message = "GAME WON"
+                self.run = False
+
             if(self.run == False):
-                print("GAME OVER")
+                print(message)
 
             if(not self.player.steps.empty()):
                 direction = self.player.steps.get()
