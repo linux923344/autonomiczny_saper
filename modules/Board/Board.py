@@ -65,6 +65,15 @@ class Board:
                 else:
                     print(nearestBomb, " defused")
 
+            self.run = False
+            for index_y, y in enumerate(self.board):
+                for index_x, x in enumerate(y):
+                    if(x.__class__.__base__ is Bomb):
+                        if(x.timer > 0):
+                            self.run = True
+            if(self.run == False):
+                print("GAME OVER")
+
             if(not self.player.steps.empty()):
                 direction = self.player.steps.get()
                 self.walk(direction)
@@ -89,6 +98,8 @@ class Board:
                         self.walk(Direction.DOWN)
                     if (event.key == K_UP):
                         self.walk(Direction.UP)
+
+        self.close()
 
     def __getNearestBomb(self, x, y):
 
