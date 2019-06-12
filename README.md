@@ -28,7 +28,7 @@ pip install graphviz
 pip install pydotplus
 ```
 
-# Przykładowe zrzuty ekranu
+# Przykładowy zrzuty ekranu
 ![alt text](https://github.com/linux923344/autonomiczny_saper/blob/master/raport/screen.png)
 
 # Raport 
