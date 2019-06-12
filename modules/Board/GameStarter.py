@@ -26,7 +26,7 @@ class GameStarter:
             s.addSteps(steps)
         elif(algorytmType == "AlgorythmType.VOWPAL_WABBIT"):
             board.setMachineLearningWalkning(WalkingType.VOWLPAL_WALKER)
-        elif(algorytmType == "AlgorythmType.DECYSION_TREE"):
+        elif(algorytmType == "AlgorythmType.DECISION_TREE"):
             board.setMachineLearningWalkning(WalkingType.DECISION_TREE_WALKER)
 
         board.addPlayer(s, 5, 0)

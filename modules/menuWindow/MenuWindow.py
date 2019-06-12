@@ -20,7 +20,7 @@ class MenuWindow(Tk):
         self.variable.set(AlgorythmType.BEST_FIRST_SEARCH)  # default value
 
         self.algorytmSelector = OptionMenu(self, self.variable, AlgorythmType.BEST_FIRST_SEARCH, AlgorythmType.BREADTH_FIRST_SEARCH,
-                                           AlgorythmType.DFS, AlgorythmType.VOWPAL_WABBIT, AlgorythmType.DECYSION_TREE)
+                                           AlgorythmType.DFS, AlgorythmType.VOWPAL_WABBIT, AlgorythmType.DECISION_TREE)
 
         self.variable.trace("w", self.get_selection)
 
