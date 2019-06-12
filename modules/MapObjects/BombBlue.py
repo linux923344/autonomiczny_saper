@@ -14,5 +14,8 @@ class BombBlue(Bomb):
     def defuse(self, tool):
         if(type(tool) is Tool):
             self.defuseLevel -= 1
+            if (self.defuseLevel<=0):
+                self.sprite = 'sprites/bombDefused.png'
+                self.timer = 0
         else:
             return False
